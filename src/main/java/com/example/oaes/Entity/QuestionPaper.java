@@ -15,13 +15,13 @@ public class QuestionPaper {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long pid;
 
-    @OneToMany
+    @ManyToMany
     private List<Msqs> msqs;
 
-    @OneToMany
+    @ManyToMany
     private List<Mcqs>mcqs;
 
-    @OneToMany
+    @ManyToMany
     private List<Descriptive> descriptives;
 
     @Override
@@ -32,6 +32,12 @@ public class QuestionPaper {
                 ", mcqs=" + mcqs +
                 ", descriptives=" + descriptives +
                 '}';
+    }
+
+    public QuestionPaper() {
+        msqs=new ArrayList<>();
+        mcqs=new ArrayList<>();
+        descriptives=new ArrayList<>();
     }
 
     public List<Msqs> getMsqs() {
@@ -57,4 +63,21 @@ public class QuestionPaper {
     public void setDescriptives(List<Descriptive> descriptives) {
         this.descriptives = descriptives;
     }
+    public void addDesc(Descriptive descriptive)
+    {
+        descriptives.add(descriptive);
+    }
+    public void addMcq(Mcqs mcq)
+    {
+        mcqs.add(mcq);
+    }
+    public void addMsqs(Msqs msq)
+    {
+        msqs.add(msq);
+    }
+
+    public Long getPid() {
+        return pid;
+    }
+
 }

@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface ExamPatternDao extends JpaRepository<ExamPattern,Long> {
     public List<ExamPattern> findAll();
+    public ExamPattern getExamPatternByPid(Long id);
 }
